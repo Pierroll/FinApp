@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: pierol
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: auth2_development
+
+test:
+  <<: *default
+  database: auth2_test
+
+production:
+  <<: *default
+  database: auth2_production
+  username: auth2
+  password: <%= ENV["AUTH2_DATABASE_PASSWORD"] %>
